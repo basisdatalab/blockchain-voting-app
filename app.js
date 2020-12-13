@@ -3,7 +3,7 @@ const app = express();
 var router = require('./app/route/route');
 const port = 3000;
 
-app.use('/api/v1', router);
+app.use('/api/v1/voting', router);
 
 app.listen(port, () => {
     console.log(`Voting app is live at port ${port}`);

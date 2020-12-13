@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
 
 //inisialisasi handler lainnya disini
 const votingHandler = require('../modules/voting/handlers/api_handler');
