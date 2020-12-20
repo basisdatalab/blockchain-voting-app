@@ -62,7 +62,7 @@ router.post('/stakeholder/register', function(req, res){
               return;
             } else {
               req.flash('success','Anda telah terdaftar sebagai Stakeholder, silahkan login');
-              res.redirect('/google/stakeholder');
+              res.redirect('/stakeholder/login');
             }
           });
         });
