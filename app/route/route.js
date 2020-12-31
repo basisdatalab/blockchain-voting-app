@@ -1,11 +1,33 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport')
+require('../helpers/passport-configuration');
+
 
 //inisialisasi handler lainnya disini
-const votingHandler = require('../modules/voting/handlers/api_handler');
 
 const adminHandler = require('../modules/administrator/handler/api_handler');
 
-// router.get('/', adminHandler.vote);
+//untuk register admin dan login
 
-module.exports = router;
+// router.get('/register', adminHandler.register())
+// router.get('/login', adminHandler.login())
+router.get('/', adminHandler.notLogin)
+router.get('/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/');
+})
+router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
+router.get('/failed', adminHandler.notLogin)
+router.get('/google/callback',
+    passport.authenticate('google', { failureRedirect: '/failed' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/success');
+    });
+
+router.get('/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+module.exports = router
