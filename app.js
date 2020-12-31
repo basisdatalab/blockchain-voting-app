@@ -8,7 +8,7 @@ const passport = require('passport')
 
 var cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
-
+app.get('/admin', router)
 app.use(cookieSession({
     name: 'voting-session',
     keys: ['key1', 'key2']
@@ -16,7 +16,7 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.get("/admin", router)
+
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))

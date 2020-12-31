@@ -8,10 +8,6 @@ require('../helpers/passport-configuration');
 
 const adminHandler = require('../modules/administrator/handler/api_handler');
 
-//untuk register admin dan login
-
-// router.get('/register', adminHandler.register())
-// router.get('/login', adminHandler.login())
 router.get('/', adminHandler.notLogin)
 router.get('/logout', (req, res) => {
     req.session = null;
