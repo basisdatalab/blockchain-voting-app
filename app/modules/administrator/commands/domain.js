@@ -1,18 +1,9 @@
-//Karena ini adalah domain yang berada pada repositories command, maka isinya hanya bisa create, update dan delete data
-const passport = require('passport');
+// //Karena ini adalah domain yang berada pada repositories command, maka isinya hanya bisa create, update dan delete data
+// const passport = require('passport');
 
-class administrator {
-    
-    async passport_authenticate() {
-        passport.authenticate('google', { failureRedirect: '/failed' }),
-            function (req, res) {
-                // Successful authentication, redirect home.
-                res.redirect('/success');
-            }
-    }
+// class administrator {
+//     // buat cek udah terdaftar apa belum.
 
-    // buat cek udah terdaftar apa belum.
+// };
 
-};
-
-module.exports = administrator;
+// module.exports = administrator;
