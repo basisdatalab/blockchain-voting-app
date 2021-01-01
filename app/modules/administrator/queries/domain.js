@@ -2,26 +2,26 @@
 
 
 class Login {
-    async getLogin(payload) {
-        const login = `Selamat datang diserver kami ${req.user.displayName}`
+    getLogin() {
+        const login = `Selamat datang diserver kami ` //${req.user.displayName}
         return login;
     }
-    async getRegister() {
+    getRegister() {
         const register = 'terimakasih sudah register!';
         return register;
     }
 
-    async notLogin() {
+    notLogin() {
         const notLogin = `anda sedang tidak login!`;
         return notLogin
     }
 
-    async notVerif() {
+    notVerif() {
         const notVerif = `login dengan email telkom University!`;
         return notVerif
     }
 
-    async gagalLogin() {
+    gagalLogin() {
         const gagalLogin = `Gagal login! silahkan ulangi!`;
         return gagalLogin
     }
