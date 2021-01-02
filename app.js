@@ -16,7 +16,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/admin', router);
+app.use('/api/v1/voting', router);
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
