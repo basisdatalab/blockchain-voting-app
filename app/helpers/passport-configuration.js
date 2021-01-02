@@ -26,3 +26,15 @@ passport.use(new GoogleStrategy({
         // });
     }
 ));
+passport.use(new GoogleStrategy({
+    clientID: "951427217505-jluqul4vr760eh8v0kur16260rft7u0u.apps.googleusercontent.com",
+    clientSecret: "86jl8_3SqlFTItJUDDUWb5pn",
+    callbackURL: "http://localhost:3007/api/v1/voting/voter/login/callback"
+},
+    function (accessToken, refreshToken, profile, done) {
+
+        // User.findOrCreate({ googleId: profile.id }, function (err, user) { untuk melihat di db ini
+        return done(null, profile);
+        // });
+    }
+));
