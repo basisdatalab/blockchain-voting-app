@@ -6,8 +6,9 @@ const queryHandler = require('../queries/query_handler');
 const showLogin = async (req, res) => {
     // Logic request validation
     //Setelah request di validasi, variable yang mengandung request tersebut diterima ke handler selanjutnya
-    // memanggil fungsi dari command handler untuk login, lalu 
+    // memanggil fungsi dari command handler untuk login
     const result = await queryHandler.getLogin();
+   //  res.redirect('/stakeholder/success');
     return res.send(result);
 };
 const failedLogin = async (req, res) => {
@@ -22,7 +23,7 @@ const notLogin = async (req, res) => {
 
 const isLoggedIn = async (req, res, next) => {
     if (req.user) {
-        next();
+       next();
     } else {
         const hasil = await queryHandler.notVerif();
         return res.send(hasil);

@@ -1,8 +1,6 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-
-
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -13,16 +11,16 @@ passport.deserializeUser(function (user, done) {
     // });
 });
 
-
 passport.use(new GoogleStrategy({
-    clientID: "735820590312-qpvtm7ajfahi5pge4k699oli9r4s0gpi.apps.googleusercontent.com",
-    clientSecret: "ynLXkzbyBzrKp9tt-X4Z_Ohz",
-    callbackURL: "http://localhost:3007/admin/google/callback"
+    clientID: "665311001771-tlkhbgkgcb0uvaqgsael87ati33sck0l.apps.googleusercontent.com",
+    clientSecret: "g-Ja7yVVU4LJituJUTlVsd-3",
+    callbackURL: "http://localhost:3007/stakeholder/get/callback"
 },
     function (accessToken, refreshToken, profile, done) {
-
+        console.log(profile)
         // User.findOrCreate({ googleId: profile.id }, function (err, user) { untuk melihat di db ini
         return done(null, profile);
         // });
     }
 ));
+
