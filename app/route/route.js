@@ -28,7 +28,7 @@ router.get('/get/callback',
         console.log(req.user._json.email)
         
         
-        if (req.user._json.email == "rlzmtnck@student.telkomuniversity.ac.id") { // kondisi jika email admin , maka akan redirect ke /admin/success
+        if (req.user._json.email == "rlzmtnck@student.telkomuniversity.ac.id") { // kondisi jika email role admin , maka akan redirect ke /admin/success
         res.redirect('/admin/success');
             
         } else {
