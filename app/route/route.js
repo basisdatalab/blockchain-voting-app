@@ -8,6 +8,7 @@ require('../helpers/passport-configuration')
 
 const stakeHandler = require('../modules/stakeholder/handler/api_handler');
 const adminHandler = require('../modules/administrator/handler/api_handler');
+const voterHandler = require('../modules/voter/handler/api_handler')
 
 // Stakeholder
 router.get('/', stakeHandler.notLogin)
@@ -16,11 +17,10 @@ router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/stakeholder');
 })
+
 router.get('/success', stakeHandler.isLoggedIn, stakeHandler.showLogin)
 router.get('/failed', stakeHandler.notLogin)
 router.get('/login',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
-
 router.get('/get/callback',
     passport.authenticate('google', { failureRedirect: '/failed' }),
     function (req, res) {
@@ -35,7 +35,20 @@ router.get('/get/callback',
             res.redirect('/stakeholder/success');
         }
     });
-    
+// Voter
+router.get('/voter/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/api/v1/voting');
+router.get('/voter/login/success', voterHandler.isLoggedIn, voterHandler.showLogin)
+router.get('/voter/login/failed', voterHandler.failedLogin)
+})
+ router.get('/voter/login/callback',
+    passport.authenticate('google', { failureRedirect: '/voter/login/failed' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/api/v1/voting/voter/login/success');
+    });
 // Admin
     router.get('/', adminHandler.notLogin)
     router.get('/logout', (req, res) => {
@@ -47,5 +60,21 @@ router.get('/get/callback',
     router.get('/failed', adminHandler.notLogin)
     router.get('/google',
         passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
+
+router.get('/google',
+
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/voter/login',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+
+
+    
+
+
+
+
+
 
 module.exports = router
