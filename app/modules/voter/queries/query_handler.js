@@ -2,9 +2,9 @@ const getVoter = require('./domain')
 
 // fungsi-fungsi disini akan inisialisasi object module
 
-const getLogin = () => {
+const getLogin = (payload) => {
     const getLoginVoter = new getVoter()
-    return getLoginVoter.getLogin()
+    return getLoginVoter.getLogin(payload)
 }
 
 const notLogin = () => {
