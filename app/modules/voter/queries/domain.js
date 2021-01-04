@@ -1,8 +1,11 @@
 //Karena ini adalah domain yang berada pada repositories query, maka isinya hanya bisa get data
 
 class Login {
-    getLogin(){
-        const login = `Selamat datang `
+    getLogin(payload){
+        const displayName = payload.name
+        const userEmail = payload.email
+        const profilePicture = payload.picture
+        const login = `Selamat datang ` + displayName + " dengan email: " + userEmail + ' dan link foto: ' + profilePicture
         return login
     }
     notLogin(){

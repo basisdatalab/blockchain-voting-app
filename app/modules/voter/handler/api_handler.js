@@ -4,7 +4,12 @@ const queryHandler = require('../queries/query_handler')
 // isi dari setiap fungsi disini adalah request validation
 
 const showLogin = async(req,res)=>{
-    const result = await queryHandler.getLogin()
+    const payload = {
+        name : req.user.displayName,
+        email : req.user.emails[0].value,
+        picture : req.user.photos[0].value
+    }
+    const result = await queryHandler.getLogin(payload)
     return res.send(result)
 }
 
