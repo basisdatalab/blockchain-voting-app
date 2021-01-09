@@ -13,6 +13,7 @@ router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/admin');
 })
+
 router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
 router.get('/failed', adminHandler.notLogin)
 router.get('/google',
