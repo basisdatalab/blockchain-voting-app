@@ -65,7 +65,7 @@ router.get('/admin', adminHandler.notLogin)
 router.get('/admin/logout', (req, res) => {
     req.session = null;
     req.logout();
-    res.redirect('/admin');
+    res.redirect('/api/v1/voting/admin');
 })
 router.get('/admin/login/callback',
     passport.authenticate('google', { failureRedirect: '/admin/login/failed' }),
