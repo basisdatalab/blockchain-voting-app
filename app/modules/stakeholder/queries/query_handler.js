@@ -1,29 +1,29 @@
-const getAdmin = require('./domain');
+const getStake = require('./domain');
 
 //Fungsi-fungsi disini akan inisialisasi object module
 
-const getLogin = (info) => {
-    const getLogin = new getAdmin();
-    return getLogin.getLogin(info);
+const getLogin = () => {
+    const getLogin = new getStake();
+    return getLogin.getLogin();
 };
 
 const getRegister = () => {
-    const getRegister = new getAdmin();
+    const getRegister = new getStake();
     return getRegister.getRegister();
 }
 
 const notLogin = () => {
-    const notLogin = new getAdmin();
+    const notLogin = new getStake();
     return notLogin.notLogin();
 }
 
 const notVerif = () => {
-    const notVerif = new getAdmin();
+    const notVerif = new getStake();
     return notVerif.notVerif();
 }
 
 const gagalLogin = () => {
-    const gagalLogin = new getAdmin();
+    const gagalLogin = new getStake();
     return gagalLogin.gagalLogin();
 }
 
