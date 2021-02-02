@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport')
-require('../helpers/passport-configuration')
+const passport = require('passport');
+require('../helpers/passport-configuration');
 
 // inisialisasi handler lainnya disini  
 
-
+const committeeHandler = require('../modules/committee/handler/api_handler');
 const stakeHandler = require('../modules/stakeholder/handler/api_handler');
 const adminHandler = require('../modules/administrator/handler/api_handler');
-const voterHandler = require('../modules/voter/handler/api_handler')
+const voterHandler = require('../modules/voter/handler/api_handler');
 
 // Stakeholder
 router.get('/', stakeHandler.notLogin)
@@ -61,6 +61,41 @@ router.get('/voter/login',
 
 
 
+
+// Admin
+router.get('/', adminHandler.notLogin)
+router.get('/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/admin');
+})
+router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
+router.get('/failed', adminHandler.notLogin)
+router.get('/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
+
+// Committee
+router.get('/committee/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/api/v1/voting');
+    router.get('/committee/login/success', committeeHandler.isLoggedIn, committeeHandler.showLogin)
+    router.get('/committee/login/failed', committeeHandler.failedLogin)
+})
+router.get('/committee/login/callback',
+    passport.authenticate('google', { failureRedirect: '/committee/login/failed' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/api/v1/voting/committee/login/success');
+    });
+
+router.get('/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/voter/login',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/committee/login',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
 
