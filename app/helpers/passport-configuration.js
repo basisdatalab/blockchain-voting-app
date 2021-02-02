@@ -25,6 +25,7 @@ passport.use(new GoogleStrategy({
     }
 ));
 
+// COMMENT SEMENTARA, callback tabrakan.
 // passport.use(new GoogleStrategy({
 //     clientID: "665311001771-tlkhbgkgcb0uvaqgsael87ati33sck0l.apps.googleusercontent.com",
 //     clientSecret: "g-Ja7yVVU4LJituJUTlVsd-3",
