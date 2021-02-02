@@ -17,8 +17,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/v1/voting', router);
-app.use('/admin', router);
-app.use('/stakeholder', router);
 
 
 
