@@ -59,6 +59,11 @@ router.get('/voter/login/callback',
 router.get('/voter/login',
     passport.authenticate('google', { scope: ['profile', 'email'] }));
 
+
+
+
+
+
 // Admin
 
 router.get('/admin', adminHandler.notLogin)
