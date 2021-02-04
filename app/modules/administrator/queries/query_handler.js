@@ -2,9 +2,9 @@ const getAdmin = require('./domain');
 
 //Fungsi-fungsi disini akan inisialisasi object module
 
-const getLogin = () => {
+const getLogin = (info) => {
     const getLogin = new getAdmin();
-    return getLogin.getLogin();
+    return getLogin.getLogin(info);
 };
 
 const getRegister = () => {

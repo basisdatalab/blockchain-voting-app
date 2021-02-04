@@ -7,7 +7,12 @@ const showLogin = async (req, res) => {
     // Logic request validation
     //Setelah request di validasi, variable yang mengandung request tersebut diterima ke handler selanjutnya
     // memanggil fungsi dari command handler untuk login, lalu 
-    const result = await queryHandler.getLogin();
+    const info = {
+        name: req.user.displayName,
+        email: req.user.emails[0].value,
+        picture: req.user.photos[0].value
+    }
+    const result = await queryHandler.getLogin(info);
     return res.send(result);
 };
 const failedLogin = async (req, res) => {
