@@ -20,6 +20,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/v1/voting', router);
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+>>>>>>> Stashed changes
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))

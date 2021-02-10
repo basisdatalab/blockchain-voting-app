@@ -2,9 +2,12 @@
 
 
 class Login {
-    getLogin() {
-        const login = `Selamat datang diserver kami ` //${req.user.displayName}
-        return login;
+    getLogin(show){
+        const displayName = show.name
+        const userEmail = show.email
+        const profilePicture = show.picture
+        const login = `Selamat datang ` + displayName + " dengan email: " + userEmail + profilePicture
+        return login
     }
     getRegister() {
         const register = 'terimakasih sudah register!';

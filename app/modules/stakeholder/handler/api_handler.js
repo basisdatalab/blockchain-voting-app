@@ -3,14 +3,15 @@ const queryHandler = require('../queries/query_handler');
 
 // Isi dari setiap fungsi disini adalah request validation
 
-const showLogin = async (req, res) => {
-    // Logic request validation
-    //Setelah request di validasi, variable yang mengandung request tersebut diterima ke handler selanjutnya
-    // memanggil fungsi dari command handler untuk login
-    const result = await queryHandler.getLogin();
-   //  res.redirect('/stakeholder/success');
-    return res.send(result);
-};
+const showLogin = async(req,res)=>{
+    const show = {
+        name : req.user.displayName,
+        email : req.user.emails[0].value,
+        picture : req.user.photos[0].value
+    }
+    const result = await queryHandler.getLogin(show)
+    return res.send(result)
+}
 const failedLogin = async (req, res) => {
     const result = await queryHandler.gagalLogin();
     return res.send(result);
