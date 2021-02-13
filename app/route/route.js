@@ -56,8 +56,9 @@ router.get('/voter/login/callback',
         res.redirect('/api/v1/voting/voter/login/success');
     });
 
-router.get('/voter/login',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.post("/voter/login",voterHandler.verifyLogin)
+// router.get('/voter/login',
+//     passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
 

@@ -1,12 +1,21 @@
 //Karena ini adalah domain yang berada pada repositories query, maka isinya hanya bisa get data
+const Pool = require("pg").Pool;
 
+const pool = new Pool({
+    host: "localhost",
+    user: "postgres",
+    password: "rizkyroyal123",
+    port: 5432,
+    database: "VotingApp"
+});
 class Login {
-    getLogin(payload){
-        const displayName = payload.name
-        const userEmail = payload.email
-        const profilePicture = payload.picture
-        const login = `Selamat datang ` + displayName + " dengan email: " + userEmail + ' dan link foto: ' + profilePicture
-        return login
+    async getLogin(payload){
+        const userName = payload.name.toLowerCase()
+        const user = await pool.query("SELECT * FROM voter WHERE LOWER(name) = $1",[userName])
+        if(user.rows.length === 0){
+            return "Nama Tidak Terdaftar"
+        }
+        return "Nama terdaftar"
     }
     notLogin(){
         const notLogin = `anda belum login`
