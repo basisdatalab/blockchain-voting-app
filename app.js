@@ -7,6 +7,7 @@ const router = require('./app/route/route');
 require('dotenv').config();
 
 console.log(process.env)
+app.use(cors())
 
 const port = process.env.PORT;
 
@@ -19,12 +20,9 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api/v1/voting', router);
-
-app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
+app.use('/api/v1/voting', router);
 
 app.listen(port, () => console.log(`running listening port ${port}`))
