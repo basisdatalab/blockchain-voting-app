@@ -4,7 +4,7 @@ require('pg')
 class Login {
     async getLogin(payload) {
         const id = payload.id
-        const user = await pool.query("SELECT * FROM admin WHERE id_committee = $1",[id])
+        const user = await pool.query("SELECT * FROM admin WHERE id_committee = $1", [id])
         if(user.rows.length === 0){
             return {
                 status: 'false',
