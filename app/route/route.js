@@ -59,19 +59,6 @@ router.get('/voter/login',
 
 
 
-// Admin
-router.get('/', adminHandler.notLogin)
-router.get('/logout', (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/admin');
-})
-router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
-router.get('/failed', adminHandler.notLogin)
-router.get('/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
-router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
-
 // Committee
 router.get('/committee/logout', (req, res) => {
     req.session = null;
@@ -114,8 +101,8 @@ router.get('/admin/login/callback',
 router.get('/admin/login/success', adminHandler.isLoggedIn, adminHandler.showLogin)
 router.get('/admin/login/failed', adminHandler.notLogin)
 router.get('/admin/login/success', adminHandler.isLoggedIn, adminHandler.showLogin)
-router.get('/admin/login',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.post('/admin/login', adminHandler.verifyLogin)
+    //  passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
 
