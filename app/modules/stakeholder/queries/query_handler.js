@@ -7,11 +7,6 @@ const getLogin = () => {
     return getLogin.getLogin();
 };
 
-const getRegister = () => {
-    const getRegister = new getStake();
-    return getRegister.getRegister();
-}
-
 const notLogin = () => {
     const notLogin = new getStake();
     return notLogin.notLogin();
@@ -29,7 +24,6 @@ const gagalLogin = () => {
 
 module.exports = {
     getLogin,
-    getRegister,
     notLogin,
     gagalLogin,
     notVerif

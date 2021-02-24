@@ -18,10 +18,7 @@ router.get('/logout', (req, res) => {
     res.redirect('/stakeholder');
 })
 
-router.get('/success', adminHandler.isLoggedIn, adminHandler.showLogin)
-router.get('/failed', adminHandler.notLogin)
-router.get('/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
 
 router.get('/success', stakeHandler.isLoggedIn, stakeHandler.showLogin)
 router.get('/failed', stakeHandler.notLogin)
@@ -56,9 +53,8 @@ router.get('/voter/login/callback',
         res.redirect('/api/v1/voting/voter/login/success');
     });
 
-router.post("/voter/login",voterHandler.verifyLogin)
-// router.get('/voter/login',
-//     passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/voter/login',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
 
