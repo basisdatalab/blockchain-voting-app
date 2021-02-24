@@ -14,12 +14,10 @@ class Login {
         const user = await pool.query("SELECT * FROM stakeholder WHERE id_stakeholder = $1", [id])
           if(user.rows.length === 0){
             return res.status(400).send({
-                status: 'false',
                 message : 'Email Tidak terdaftar sebagai stakeholder'
             })
         }
         return res.status(200).send({
-            status: 'true',
             message : 'Email Terdaftar sebagai stakeholder, selamat datang!'
         })
     }

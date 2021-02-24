@@ -20,14 +20,12 @@ class Register {
     async nowRegister(show) {
         if (!req.body.email) {
             return res.status(400).send({
-                status: 'false',
                 message: 'No values!'
 
             })
           }
         if (!Helper.isValidEmail(req.body.email)) {
             return res.status(400).send({
-                status: 'false',
                 message: 'Please enter a valid email address'
                 
             });
@@ -42,13 +40,13 @@ class Register {
         try {
             const { rows } = await db.query(createQuery, values);
             return res.status(200).send({
-                status: 'true',
+
                 message: 'Email berhasil ditambahkan'
             })
           } catch(error) {
             if (error.routine === '_bt_check_unique') {
               return res.status(400).send({
-                  status: 'false',
+
                   message: 'Email telah terdaftar'
               })
             }
