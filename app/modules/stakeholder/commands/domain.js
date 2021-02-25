@@ -18,6 +18,7 @@ const pool = new Pool({
 import Helper from '../Helper/Helper';
 class Register {
     async nowRegister(show) {
+      
         if (!req.body.email) {
             return res.status(400).send({
                 message: 'No values!'
@@ -30,13 +31,10 @@ class Register {
                 
             });
           }
-        const createQuery = `INSERT INTO
-          Stakeholder(id_stakeholder, email)
-          VALUES($1, $2)
-          returning *`;
-        const values = [
-          req.body.email
-        ];
+        const email = show.email
+        const user = await pool.query("SELECT * FROM stakeholder WHERE email = $1", [email])
+        const createQuery = `INSERT INTO stakeholder VALUES ($1, $2, $3, $4)`;
+        const values = [show.id, show.name, show.sid, show.email]
         try {
             const { rows } = await db.query(createQuery, values);
             return res.status(200).send({
