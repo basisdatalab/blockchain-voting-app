@@ -19,10 +19,12 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.CLIENT_CALLBACKURL
 },
     function (accessToken, refreshToken, profile, done) {
+        console.log(profile)
         // User.findOrCreate({ googleId: profile.id }, function (err, user) { untuk melihat di db ini
         return done(null, profile);
         // });
     }
+      
 ));
 
 // COMMENT SEMENTARA, callback tabrakan.

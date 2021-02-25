@@ -32,9 +32,23 @@ const failedLogin = async (req, res) => {
     return res.send(result)
 }
 
+const verifyLogin = async(req,res) =>{
+    try {
+        const payload = {
+            name : req.body.name
+        }
+        const result = await queryHandler.getLogin(payload)
+        return res.json(result)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+}
+
 module.exports = {
     showLogin,
     notLogin,
     isLoggedIn,
-    failedLogin
+    failedLogin,
+    verifyLogin
 }
