@@ -17,7 +17,7 @@ class Login {
                 message : 'Email Tidak terdaftar sebagai stakeholder'
             })
         }
-        return res.status(200).send({
+        return res.status(201).send({
             message : 'Email Terdaftar sebagai stakeholder, selamat datang!'
         })
     }

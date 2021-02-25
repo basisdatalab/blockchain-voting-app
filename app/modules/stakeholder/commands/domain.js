@@ -25,10 +25,10 @@ class Register {
         const email = show.email
         const user = await pool.query("SELECT * FROM stakeholder WHERE email = $1", [email])
         if(user.rows.length === 0){
-          var sql = `INSERT INTO stakeholder VALUES ($1, $2, $3, $4)`;
+          var create = `INSERT INTO stakeholder VALUES ($1, $2, $3, $4)`;
           var params = [show.id, show.name, show.sid, show.email]
-          pool.query(sql, params)
-          return res.status(200).send({
+          pool.query(create, params)
+          return res.status(201).send({
 
                 message: 'Email berhasil ditambahkan'
             })
