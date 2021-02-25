@@ -1,4 +1,5 @@
 const queryHandler = require('../queries/query_handler');
+const { query } = require('express')
 // const commandHandler = require('../commands/command_handler');
 
 // Isi dari setiap fungsi disini adalah request validation
@@ -30,11 +31,38 @@ const isLoggedIn = async (req, res, next) => {
         return res.send(hasil);
     }
 }
-
-
+const verifyLogin = async (req, res) => {
+    try {
+        const payload = {
+            email : req.body.email
+        }
+    const result = await queryHandler.getLogin(show)
+    return res.json(result)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+}
+const verifyRegister = async (req, res) => {
+    try {
+        const show = {
+            id : req.body.id,
+            name : req.body.name,
+            sid : req.body.sid,
+            email : req.body.email
+        }
+    const result = await queryHandler.getRegister(show)
+    return res.json(result)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+}
 module.exports = {
     isLoggedIn,
     failedLogin,
     showLogin,
-    notLogin
+    notLogin,
+    verifyRegister,
+    verifyLogin
 };

@@ -52,4 +52,4 @@ class Register {
           }
         }
     }
-module.exports = Register;
+export default Register;

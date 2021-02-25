@@ -21,7 +21,6 @@ class Login {
             message : 'Email Terdaftar sebagai stakeholder, selamat datang!'
         })
     }
-    getRegister (){}
     notLogin() {
         const notLogin = `anda sedang tidak login!`;
         return notLogin
