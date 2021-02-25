@@ -1,4 +1,5 @@
 const queryHandler = require('../queries/query_handler');
+const commandHandler = require('../commands/command_handler')
 const { query } = require('express')
 // const commandHandler = require('../commands/command_handler');
 
@@ -51,7 +52,7 @@ const verifyRegister = async (req, res) => {
             sid : req.body.sid,
             email : req.body.email
         }
-    const result = await queryHandler.getRegister(show)
+    const result = await commandHandler.getRegister(show)
     return res.json(result)
     } catch (err) {
         console.error(err.message)

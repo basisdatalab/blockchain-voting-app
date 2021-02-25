@@ -1,12 +1,3 @@
-// //Karena ini adalah domain yang berada pada repositories command, maka isinya hanya bisa create, update dan delete data
-// const passport = require('passport');
-
-// class administrator {
-//     // buat cek udah terdaftar apa belum.
-
-// };
-
-// module.exports = stakeholder;
 const Pool = require("pg").Pool;
 const pool = new Pool({
     host: "localhost",
@@ -52,4 +43,6 @@ class Register {
           }
         }
     }
-export default Register;
+module.exports = {
+  Register: Register
+}
