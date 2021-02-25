@@ -4,7 +4,7 @@ const getStake = require('./domain');
 
 const getLogin = (show) => {
     const getLoginStake = new getStake();
-    return getLoginStake.getLogin();
+    return getLoginStake.getLogin(show);
 };
 
 const notLogin = () => {
