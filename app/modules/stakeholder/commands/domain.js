@@ -24,25 +24,22 @@ class Register {
           }
         const email = show.email
         const user = await pool.query("SELECT * FROM stakeholder WHERE email = $1", [email])
-        const createQuery = `INSERT INTO stakeholder VALUES ($1, $2, $3, $4)`;
-        const values = [show.id, show.name, show.sid, show.email]
-        try {
-            const { rows } = await db.query(createQuery, values);
-            return res.status(200).send({
+        if(user.rows.length === 0){
+          var sql = `INSERT INTO stakeholder VALUES ($1, $2, $3, $4)`;
+          var params = [show.id, show.name, show.sid, show.email]
+          pool.query(sql, params)
+          return res.status(200).send({
 
                 message: 'Email berhasil ditambahkan'
             })
-          } catch(error) {
-            if (error.routine === '_bt_check_unique') {
-              return res.status(400).send({
+          } 
+          return res.status(400).send({
 
-                  message: 'Email telah terdaftar'
-              })
-            }
-            return res.status(400).send(error);
-          }
-        }
+            name : 'Email sudah terdaftar sebagai stakeholder.'
+        })
+        
     }
-module.exports = {
+}
+module.exports = {  
   Register: Register
 }
