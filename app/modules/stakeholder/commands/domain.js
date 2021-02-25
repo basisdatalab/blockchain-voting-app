@@ -6,7 +6,9 @@ const pool = new Pool({
     port: 6000,
     database: "VotingApp"
 });
-import Helper from '../Helper/Helper';
+function isValidEmail(email) {
+  return /\S+@\S+\.\S+/.test(email);
+}
 class Register {
     async nowRegister(show) {
       
@@ -16,7 +18,7 @@ class Register {
 
             })
           }
-        if (!Helper.isValidEmail(req.body.email)) {
+        if (!isValidEmail(req.body.email)) {
             return res.status(400).send({
                 message: 'Please enter a valid email address'
                 

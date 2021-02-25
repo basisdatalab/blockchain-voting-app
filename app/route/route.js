@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-require('../helpers/passport-configuration');
+//require('../helpers/passport-configuration');
 
 // inisialisasi handler lainnya disini  
 

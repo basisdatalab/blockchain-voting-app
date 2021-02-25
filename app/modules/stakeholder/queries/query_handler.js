@@ -2,9 +2,9 @@ const getStake = require('./domain');
 
 //Fungsi-fungsi disini akan inisialisasi object module
 
-const getLogin = () => {
-    const getLogin = new getStake();
-    return getLogin.getLogin();
+const getLogin = (show) => {
+    const getLoginStake = new getStake();
+    return getLoginStake.getLogin();
 };
 
 const notLogin = () => {

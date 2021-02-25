@@ -34,7 +34,7 @@ const isLoggedIn = async (req, res, next) => {
 }
 const verifyLogin = async (req, res) => {
     try {
-        const payload = {
+        const show = {
             email : req.body.email
         }
     const result = await queryHandler.getLogin(show)
@@ -52,7 +52,7 @@ const verifyRegister = async (req, res) => {
             sid : req.body.sid,
             email : req.body.email
         }
-    const result = await commandHandler.getRegister(show)
+    const result = await commandHandler.nowRegister(show)
     return res.json(result)
     } catch (err) {
         console.error(err.message)

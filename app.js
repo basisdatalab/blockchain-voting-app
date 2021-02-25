@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 // var router = require('./app/route/route');
 const cors = require('cors')
 const passport = require('passport')
 const router = require('./app/route/route');
-require('dotenv').config();
+
 
 console.log(process.env)
 app.use(cors())
