@@ -1,17 +1,10 @@
 //Karena ini adalah domain yang berada pada repositories query, maka isinya hanya bisa get data
-const Pool = require("pg").Pool;
-const pool = new Pool({
-    host: "localhost",
-    user: "postgres",
-    password: "291100",
-    port: 6000,
-    database: "VotingApp"
-});
-
+const { pool } = require('../../../helpers/dbConfig')
+require('pg')
 class Login {
     async getLogin(show){
-        const id = show.id
-        const user = await pool.query("SELECT * FROM stakeholder WHERE id_stakeholder = $1", [id])
+        const email = show.email
+        const user = await pool.query("SELECT * FROM stakeholder WHERE email = $1", [email])
           if(user.rows.length === 0){
             return res.status(400).send({
                 message : 'Email Tidak terdaftar sebagai stakeholder'

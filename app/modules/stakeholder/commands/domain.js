@@ -1,11 +1,5 @@
-const Pool = require("pg").Pool;
-const pool = new Pool({
-    host: "localhost",
-    user: "postgres",
-    password: "291100",
-    port: 6000,
-    database: "VotingApp"
-});
+const { pool } = require('../../../helpers/dbConfig')
+require('pg')
 function isValidEmail(email) {
   return /\S+@\S+\.\S+/.test(email);
 }

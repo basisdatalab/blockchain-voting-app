@@ -11,7 +11,7 @@ const adminHandler = require('../modules/administrator/handler/api_handler');
 const voterHandler = require('../modules/voter/handler/api_handler');
 
 // Stakeholder
-router.get('/', stakeHandler.notLogin)
+router.get('/stakeholder', stakeHandler.notLogin)
 router.get('/stakeholder/logout', (req, res) => {
     req.session = null;
     req.logout();
