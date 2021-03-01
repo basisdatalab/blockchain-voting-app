@@ -32,9 +32,41 @@ const failedLogin = async(req,res) => {
     return res.send(result)
 }
 
+const verifyLogin = async (req, res) => {
+    try {
+        const payload = {
+            email : req.body.email
+        }
+    const result = await queryHandler.getLogin(payload)
+    return res.json(result)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+}
+
+const verifyRegister = async (req, res) => {
+    try {
+        const payload = {
+            id : req.body.id,
+            name : req.body.name,
+            sid : req.body.sid,
+            email : req.body.email
+        }
+    const result = await queryHandler.getRegister(payload)
+    return res.json(result)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+    }
+}
+
+
 module.exports = {
     showLogin,
     notLogin,
     isLoggedIn,
-    failedLogin
+    failedLogin,
+    verifyLogin,
+    verifyRegister
 }

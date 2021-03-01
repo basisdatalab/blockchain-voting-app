@@ -110,6 +110,8 @@ router.post('/admin/login', adminHandler.verifyLogin)
     //  passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
+router.post('/committee/login', committeeHandler.verifyLogin)
 
+router.post('/committee/register', committeeHandler.verifyRegister)
 
 module.exports = router
