@@ -18,6 +18,7 @@
     "nodejs": "0.0.0",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "socketio": "^1.0.0"
   }
 }
