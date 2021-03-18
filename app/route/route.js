@@ -111,7 +111,9 @@ router.post('/admin/login', adminHandler.verifyLogin)
 
 
 router.post('/committee/login', committeeHandler.verifyLogin)
-
 router.post('/committee/register', committeeHandler.verifyRegister)
+router.post('/committee/candidate', committeeHandler.verifyCandidate)
+router.post('/committee/voter', committeeHandler.verifyVoter)
+
 
 module.exports = router
