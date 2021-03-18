@@ -1,16 +1,18 @@
-// // inisialisasi object dari command_handler
+// // inisialisasi object dari command_handler manipulasi data semua disini
 
-// const admin = require('./domain');
+const getAdmin = require("./domain");
 
+const AcceptedVoter = () => {
+  const AcceptedVoter = new getAdmin();
+  return AcceptedVoter.AcceptedVoter;
+};
 
-// const adminLogin = async () => {
-//     const login = new admin();
-//     return login.login();
-// }
+const RejectedVoter = () => {
+  const RejectedVoter = new getAdmin();
+  return RejectedVoter.RejectedVoter;
+};
 
-// module.exports = {
-//     adminLogin,
-
-// };
-
-
+module.exports = {
+  AcceptedVoter,
+  RejectedVoter,
+};

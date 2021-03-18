@@ -1,36 +1,36 @@
-const getAdmin = require('./domain');
+const getAdmin = require("./domain");
 
 //Fungsi-fungsi disini akan inisialisasi object module
 
-const getLogin = (info) => {
-    const getLogin = new getAdmin();
-    return getLogin.getLogin(info);
+const getLogin = (payload) => {
+  const getLogin = new getAdmin();
+  return getLogin.getLogin(payload);
 };
 
 const getRegister = () => {
-    const getRegister = new getAdmin();
-    return getRegister.getRegister();
-}
+  const getRegister = new getAdmin();
+  return getRegister.getRegister();
+};
 
 const notLogin = () => {
-    const notLogin = new getAdmin();
-    return notLogin.notLogin();
-}
+  const notLogin = new getAdmin();
+  return notLogin.notLogin();
+};
 
 const notVerif = () => {
-    const notVerif = new getAdmin();
-    return notVerif.notVerif();
-}
+  const notVerif = new getAdmin();
+  return notVerif.notVerif();
+};
 
 const gagalLogin = () => {
-    const gagalLogin = new getAdmin();
-    return gagalLogin.gagalLogin();
-}
+  const gagalLogin = new getAdmin();
+  return gagalLogin.gagalLogin();
+};
 
 module.exports = {
-    getLogin,
-    getRegister,
-    notLogin,
-    gagalLogin,
-    notVerif
+  getLogin,
+  getRegister,
+  notLogin,
+  gagalLogin,
+  notVerif,
 };
