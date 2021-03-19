@@ -61,6 +61,9 @@ router.get('/voter/login/callback',
 router.get('/voter/login',
     passport.authenticate('google', { scope: ['profile', 'email'] }));
 
+router.post('/voter/vote', voterHandler.voteCandidate)
+router.post('/voter/login', voterHandler.verifyLogin)
+
 
 
 
