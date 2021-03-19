@@ -7,6 +7,16 @@ const getLogin = (show) => {
     return getLoginVoter.getLogin(show)
 }
 
+const voteCandidate = (show)=>{
+    const voteCandidateVoter = new getVoter()
+    return voteCandidateVoter.voteCandidate(show)
+}
+
+const liveVoter = (show)=>{
+    const liveVoterVote = new getVoter()
+    return liveVoterVote.liveVoter(show)
+}
+
 const notLogin = () => {
     const notLoginVoter = new getVoter()
     return notLoginVoter.notLogin()
@@ -26,5 +36,7 @@ module.exports = {
     getLogin,
     notLogin,
     notVerif,
-    failLogin
+    failLogin,
+    voteCandidate,
+    liveVoter
 }

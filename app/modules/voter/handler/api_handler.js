@@ -1,6 +1,5 @@
 const { query } = require('express')
 const queryHandler = require('../queries/query_handler')
-
 // isi dari setiap fungsi disini adalah request validation
 
 const showLogin = async (req, res) => {
@@ -45,10 +44,28 @@ const verifyLogin = async(req,res) =>{
     }
 }
 
+const voteCandidate = async(req,res)=>{
+    try {
+        const payload = {
+            candidate_id : req.body.candidate_id,
+            voter_email : req.body.voter_email
+        }
+        const result = await queryHandler.voteCandidate(payload)
+        if(result != "Candidate Tidak Ditemukan"){
+            await queryHandler.liveVoter(payload)
+        }
+        return res.json(result)
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Server Error")
+    }
+}
+
 module.exports = {
     showLogin,
     notLogin,
     isLoggedIn,
     failedLogin,
-    verifyLogin
+    verifyLogin,
+    voteCandidate
 }
