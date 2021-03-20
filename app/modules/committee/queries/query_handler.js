@@ -3,28 +3,27 @@ const getCommittee = require('./domain')
 // fungsi-fungsi disini akan inisialisasi object module
 
 const getLogin = (payload) => {
-    const getLoginCommittee = new getCommittee.Login()
+    const getLoginCommittee = new getCommittee()
     return getLoginCommittee.getLogin(payload)
 }
 
 const notLogin = () => {
-    const notLoginCommittee = new getCommittee.Login()
+    const notLoginCommittee = new getCommittee()
     return notLoginCommittee.notLogin()
 }
 
 const notVerif = () => {
-    const notVerifCommittee = new getCommittee.Login()
+    const notVerifCommittee = new getCommittee()
     return notVerifCommittee.notVerif()
 }
 
 const failLogin = () => {
-    const failLoginCommittee = new getCommittee.Login()
+    const failLoginCommittee = new getCommittee()
     return failLoginCommittee.failLogin()
 }
 
 const getRegister = (payload) => {
-    const getRegisterCommittee = new getCommittee.Register()
-    // console.log(getRegisterCommittee)
+    const getRegisterCommittee = new getCommittee()
     return getRegisterCommittee.getRegister(payload)
 }
 

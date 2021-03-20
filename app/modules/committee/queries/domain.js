@@ -1,7 +1,7 @@
 //Karena ini adalah domain yang berada pada repositories query, maka isinya hanya bisa get data
 const { pool } = require('../../../helpers/dbConfig')
 require('pg')
-class Login {
+class Logreg {
     async getLogin(payload) {
         const email = payload.email
         const user = await pool.query("SELECT * FROM committee WHERE email = $1", [email])
@@ -28,9 +28,7 @@ class Login {
         const failLogin = `Anda gagal login, silahkan login kembali`
         return failLogin
     }
-}
 
-class Register {
     async getRegister(payload) {
         const email = payload.email
         const user = await pool.query("SELECT * FROM committee WHERE email = $1", [email])
@@ -50,7 +48,4 @@ class Register {
     }
 }
 
-module.exports = {
-    Login: Login,
-    Register: Register
-}
+module.exports = Logreg
